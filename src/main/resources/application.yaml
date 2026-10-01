@@ -9,3 +9,7 @@ spring:
     username: ${DEMO_DB_USER}
     password: ${DEMO_DB_PASSWORD}
     driver-class-name: org.postgresql.Driver
+  data:
+    redis:
+      host: ${DEMO_REDIS_HOST}
+      port: ${DEMO_REDIS_PORT}

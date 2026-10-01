@@ -29,6 +29,10 @@ public class Hello {
     return new HelloResponse(id, message);
   }
 
+  public HelloCache toHelloCache() {
+    return new HelloCache(id, message);
+  }
+
   public static Hello fromHelloRequest(HelloRequest helloRequest) {
     Hello hello = new Hello();
     hello.setMessage(helloRequest.message());
