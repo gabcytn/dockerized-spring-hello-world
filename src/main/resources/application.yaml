@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: demo
+  jpa:
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: jdbc:postgresql://${DEMO_DB_ADDRESS}:${DEMO_DB_PORT}/${DEMO_DB_NAME}
+    username: ${DEMO_DB_USER}
+    password: ${DEMO_DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver

@@ -1,0 +1,28 @@
+services:
+  db:
+    image: postgres:16
+    container_name: demo-db
+    environment:
+      POSTGRES_PASSWORD: ${DEMO_DB_PASSWORD}
+      POSTGRES_USER: ${DEMO_DB_USER}
+      POSTGRES_DB: ${DEMO_DB_NAME}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  web:
+    build: .
+    container_name: demo-web
+    command: java -jar demo.jar
+    ports:
+      - 8080:8080
+    depends_on:
+      - db
+    environment:
+      DEMO_DB_ADDRESS: ${DEMO_DB_ADDRESS}
+      DEMO_DB_PORT: ${DEMO_DB_PORT}
+      DEMO_DB_NAME: ${DEMO_DB_NAME}
+      DEMO_DB_USER: ${DEMO_DB_USER}
+      DEMO_DB_PASSWORD: ${DEMO_DB_PASSWORD}
+
+volumes:
+  pgdata:
